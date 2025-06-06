@@ -6,7 +6,7 @@ import MyProjects from "@/components/MyProjects";
 
 export default function Home() {
   return (
-    <main className="scroll-smooth">
+    <main>
       <div>
         <LandingPage />
         <AboutMe />

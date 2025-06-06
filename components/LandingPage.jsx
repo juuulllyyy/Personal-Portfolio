@@ -1,7 +1,10 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Image from "next/image";
+import MissMinutes from "./modals/MissMinutes";
 
 const LandingPage = () => {
+  const [showModal, setShowModal] = useState(false);
   return (
     <main className="scroll-smooth">
       <section
@@ -84,28 +87,28 @@ const LandingPage = () => {
                     alt="Facebook Icon"
                     width={30}
                     height={30}
-                    className="transition duration-200 hover:brightness-75 hover:[#e03627]"
+                    className="transition duration-200 hover:scale-110 hover:brightness-75 hover:[#e03627]"
                   />
                   <Image
                     src="/images/instagram.png"
                     alt="Instagram Icon"
                     width={30}
                     height={30}
-                    className="transition duration-200 hover:brightness-75 hover:[#e03627]"
+                    className="transition duration-200 hover:scale-110 hover:brightness-75 hover:[#e03627]"
                   />
                   <Image
                     src="/images/linkedin.png"
                     alt="Linkedin Icon"
                     width={30}
                     height={30}
-                    className="transition duration-200 hover:brightness-75 hover:[#e03627]"
+                    className="transition duration-200 hover:scale-110 hover:brightness-75 hover:[#e03627]"
                   />
                   <Image
                     src="/images/github.png"
                     alt="Github Icon"
                     width={30}
                     height={30}
-                    className="transition duration-200 hover:brightness-75 hover:[#e03627]"
+                    className="transition duration-200 hover:scale-110 hover:brightness-75 hover:[#e03627]"
                   />
                 </div>
               </div>
@@ -115,11 +118,13 @@ const LandingPage = () => {
                 alt="Miss Minutes Icon"
                 width={200}
                 height={200}
-                className="mr-30 scale-x-100 bounce-in-smooth"
+                className="mr-30 scale-x-100 bounce-in-smooth transition duration-200 hover:scale-110 hover:[#e03627] cursor-pointer"
+                onClick={() => setShowModal(true)}
               />
             </div>
           </div>
         </div>
+        {showModal && <MissMinutes onClose={() => setShowModal(false)} />}
       </section>
     </main>
   );
