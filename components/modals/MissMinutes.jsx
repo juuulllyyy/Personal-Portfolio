@@ -2,7 +2,7 @@ import React from "react";
 
 const MissMinutes = ({ onClose }) => {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-md">
+    <div className="fixed inset-0 z-50 flex items-center justify-center animate-fade-in-scale backdrop-blur-md">
       <div className="bg-white rounded-2xl p-10 shadow-2xl text-center ">
         <h2 className="text-3xl font-bold text-[#e03627] mb-4">
           Hey there, Variant!
