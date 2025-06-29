@@ -93,13 +93,21 @@ const LandingPage = () => {
                 </li>
               </ul>
             </nav>
-            <div className="flex flex-row justify-between md:px-10 space-x-4">
+            <div className="flex flex-row justify-between xl:pr-10 space-x-4">
               {/* Social Media Icons */}
               <div>
                 <h1 className="text-xl xl:text-3xl pt-15 font-bold text-[#e03627] tracking-tighter">
                   Contact this Variant
                 </h1>
                 <div className="flex flex-row space-x-4 mt-3">
+                  <Image
+                    src="/images/mail.png"
+                    alt="Mail Icon"
+                    width={30}
+                    height={30}
+                    className="transition duration-200 hover:scale-110 hover:brightness-75 hover:[#e03627] cursor-pointer"
+                    onClick={() => openLinks("mail")}
+                  />
                   <Image
                     src="/images/facebook.png"
                     alt="Facebook Icon"
@@ -131,14 +139,6 @@ const LandingPage = () => {
                     height={30}
                     className="transition duration-200 hover:scale-110 hover:brightness-75 hover:[#e03627] cursor-pointer"
                     onClick={() => openLinks("github")}
-                  />
-                  <Image
-                    src="/images/mail.png"
-                    alt="Mail Icon"
-                    width={30}
-                    height={30}
-                    className="transition duration-200 hover:scale-110 hover:brightness-75 hover:[#e03627] cursor-pointer"
-                    onClick={() => openLinks("mail")}
                   />
                 </div>
               </div>
