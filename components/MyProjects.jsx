@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
 const projects = [
@@ -77,6 +77,21 @@ const projects = [
 ];
 const MyProjects = () => {
   const [selected, setSelected] = useState(0);
+  useEffect(() => {
+    // Preload all project images
+    projects.forEach((project) => {
+      const img = new window.Image();
+      img.src = project.image;
+    });
+
+    // Preload all tool images
+    projects.forEach((project) => {
+      project.tools?.forEach((tool) => {
+        const img = new window.Image();
+        img.src = tool;
+      });
+    });
+  }, []);
   return (
     <section
       id="projects"
