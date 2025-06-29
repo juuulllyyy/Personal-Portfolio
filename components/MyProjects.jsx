@@ -80,7 +80,7 @@ const MyProjects = () => {
   return (
     <section
       id="projects"
-      className={`min-h-screen flex p-10 pt-2  justify-between bg-black border-2 border-t-0 border-[#f8861e] w-full h-full space-x-5`}
+      className={`min-h-screen flex p-2 xl:p-6 pt-2  justify-between bg-black border-2 border-t-0 border-[#f8861e] w-full h-full space-x-5`}
     >
       <div
         className="flex flex-col bg-black border-4 border-[#f8861e] w-full"
@@ -91,19 +91,19 @@ const MyProjects = () => {
                   `,
         }}
       >
-        <div className="flex items-center justify-center p-4 border-b-4 bg-[#f8861e] border-[#f8861e] m-6 ">
-          <h1 className="text-5xl font-extrabold tracking-widest text-black">
+        <div className="flex items-center justify-center p-4 border-b-4 bg-[#f8861e] border-[#f8861e] m-6">
+          <h1 className="xl:text-5xl text-3xl font-extrabold tracking-widest text-black">
             VARIANT PROJECTS
           </h1>
         </div>
         {/* Placeholder for projec picture */}
-        <div className="flex flex-row justify-between items h-full px-8 pb-8">
-          <div className="flex flex-col justify-between items-center w-50 h-full mr-2">
-            <div className="flex flex-col items-center pt-4  border-4 w-full h-full border-[#f8861e]">
-              <h1 className="text-2xl font-bold text-[#f8861e] tracking-widest">
-                Tools
+        <div className="flex xl:flex-row flex-col justify-between items h-full px-8 pb-8">
+          <div className="flex flex-col justify-between items-center xl:w-50 w-full h-full mr-2">
+            <div className="flex flex-col items-center pt-4 border-b-0 xl:border-b-4  border-4 w-full h-full border-[#f8861e]">
+              <h1 className="xl:text-2xl text-xl font-bold text-[#f8861e] tracking-widest">
+                TOOLS
               </h1>
-              <div className="grid grid-cols-2 pt-5 justify-center gap-5 items-center">
+              <div className="grid xl:grid-cols-2 grid-cols-4 xl:pt-5 py-3 justify-center gap-5 items-center">
                 {projects[selected].tools?.map((tool, idx) => (
                   <div
                     key={idx}
@@ -124,12 +124,32 @@ const MyProjects = () => {
                 )}
               </div>
             </div>
-            <div className="flex flex-col items-center mt-4 w-full h-40 ">
+            <div className="xl:grid xl:grid-cols-2 xl:mt-4 w-full h-40 text-[#f8861e] hidden">
               <a
                 href="#landing"
-                className="border-4 border-[#f8861e] text-[#f8861e]"
+                className="flex flex-col  items-center justify-center"
               >
-                CONTACT THIS VARIANT!
+                <Image
+                  src="/images/phone.png"
+                  alt="phone logo"
+                  width={50}
+                  height={50}
+                  className="border-4"
+                />
+                <p>CONTACT</p>
+              </a>
+              <a
+                href="#landing"
+                className="flex flex-col items-center justify-center"
+              >
+                <Image
+                  src="/images/profile.png"
+                  alt="profile logo"
+                  width={50}
+                  height={50}
+                  className="border-4"
+                />
+                <p>VARIANT</p>
               </a>
             </div>
             <Image
@@ -137,14 +157,14 @@ const MyProjects = () => {
               alt="TVA Logo"
               width={200}
               height={100}
-              className="border-4"
+              className="border-4 hidden xl:block"
             />
           </div>
           {/* Placeholder for project picture */}
-          <div className="flex flex-col border-4 border-[#f8861e] p-6 w-150 h-full space-y-2">
-            <h2 className="text-3xl font-bold mb-4 text-[#f8861e] tracking-widest">
+          <div className="flex flex-col border-4 border-[#f8861e] p-6 xl:w-150 h-full space-y-2">
+            <h2 className="xl:text-3xl text-xl font-bold mb-4 text-[#f8861e] tracking-widest">
               {projects[selected].title},{" "}
-              <span className="p-1 pb-0 text-xl font-semibold text-black bg-[#f8861e]">
+              <span className="p-1 pb-0 xl:text-xl text-sm font-semibold text-black bg-[#f8861e]">
                 {projects[selected].subtitle}
               </span>
             </h2>
@@ -162,14 +182,14 @@ const MyProjects = () => {
             </p>
           </div>
           {/* Right Div for projects and descriptions*/}
-          <div className="flex flex-col w-140 h-full">
+          <div className="flex flex-col xl:w-140 h-full">
             {/* Top for projects*/}
             <div className="flex flex-col justify-center items-center w-full h-20">
-              <h1 className="text-[#f8861e] text-2xl font-semibold tracking-widest">
+              <h1 className="text-[#f8861e] xl:text-2xl text-xl font-semibold tracking-widest">
                 PROJECTS
               </h1>
-              <h1 className="text-[#f8861e] text-3xl tracking-widest">
-                /////////////////////////////////
+              <h1 className="text-[#f8861e] xl:text-3xl tracking-widest">
+                ////////////////////////////////
               </h1>
             </div>
             {/* Bottom for projects*/}

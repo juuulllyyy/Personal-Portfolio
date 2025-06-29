@@ -1,8 +1,9 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Timeline from "./ui/Timeline";
 import { IBM_Plex_Sans } from "next/font/google";
+import ResumeModal from "./modals/ResumeModal";
 
 const ibmPlex = IBM_Plex_Sans({ subsets: ["latin"], weight: ["400", "700"] });
 
@@ -23,20 +24,32 @@ const experiences = [
 
 const AboutMe = () => {
   const [current, setCurrent] = useState(0);
+  const [showResumeModal, setShowResumeModal] = useState(false);
 
   const prev = () =>
     setCurrent((prev) => (prev === 0 ? experiences.length - 1 : prev - 1));
   const next = () =>
     setCurrent((prev) => (prev === experiences.length - 1 ? 0 : prev + 1));
 
+  useEffect(() => {
+    if (showResumeModal) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [showResumeModal]);
+
   return (
     <section
       id="about"
-      className={`min-h-screen flex p-12 justify-between bg-black border-2 border-b-0 border-[#f8861e] w-full h-full ${ibmPlex.className} space-x-5`}
+      className={`min-h-screen flex flex-col xl:flex-row p-3 gap-5 xl:p-12 justify-between bg-black border-2 border-b-0 border-[#f8861e]  ${ibmPlex.className}`}
     >
       {/* Left Section with Timeline */}
       <div
-        className="flex flex-col bg-black border-4 border-[#f8861e] -px-0.5 py-5 pt- rounded-4xl w-190 space-y-10"
+        className="flex flex-col bg-black border-4 border-[#f8861e] -px-0.5 py-5 rounded-4xl w-full xl:w-190 xl:space-y-10"
         style={{
           backgroundImage: `
                   repeating-linear-gradient(0deg, rgba(255,191,133,0.1) 0, rgba(255,191,133,0.1) 1px, transparent 2px, transparent 32px),
@@ -44,28 +57,30 @@ const AboutMe = () => {
                 `,
         }}
       >
-        <div className="flex items-center justify-center h-15 bg-[#f8861e]">
-          <h1 className="text-2xl font-extrabold tracking-widest">
+        <div className="flex items-center justify-center w-full xl:h-15 bg-[#f8861e]">
+          <h1 className="xl:text-2xl text-xl font-extrabold tracking-widest">
             VARIANT SKILL ASSESSMENT
           </h1>
         </div>
         <Timeline />
 
         {/*table for skills*/}
-        <table className="w-full text-left">
+        <table className="w-full text-left text-xs xl:text-sm xl:font-bold">
           <thead>
             <tr className="bg-[#f8861e]">
-              <th className="px-4 ">SKILL MODULE</th>
-              <th className="px-4 ">CLASSIFICATION</th>
-              <th className="px-4 ">EFFICIENCY</th>
-              <th className="px-4 ">PROFICIENCY LEVEL</th>
+              <th className="p-1">SKILL MODULE</th>
+              <th className="p-1 hidden xl:block">CLASSIFICATION</th>
+              <th className="p-1">EFFICIENCY</th>
+              <th className="p-1">PROFICIENCY LEVEL</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th className="px-4 text-[#f8861e]">C#</th>
-              <th className="px-4 text-[#f8861e]">PROGRAMMING LANGUAGE</th>
-              <td className="px-4">
+              <th className="p-1 text-[#f8861e]">C#</th>
+              <th className="p-1 text-[#f8861e] hidden xl:block">
+                PROGRAMMING LANGUAGE
+              </th>
+              <td className="p-1">
                 <div className="w-20 h-4 bg-[#222]">
                   <div
                     className="flex h-4 bg-[#f8861e]"
@@ -75,13 +90,14 @@ const AboutMe = () => {
                   </div>
                 </div>
               </td>
-              <th className="px-4 text-[#f8861e]">ADEPT</th>
+              <th className="p-1 text-[#f8861e]">ADEPT</th>
             </tr>
-
             <tr>
-              <th className="px-4 text-[#f8861e]">JAVASCRIPT</th>
-              <th className="px-4 text-[#f8861e]">PROGRAMMING LANGUAGE</th>
-              <td className="px-4">
+              <th className="p-1 text-[#f8861e]">JAVASCRIPT</th>
+              <th className="p-1 text-[#f8861e] hidden xl:block">
+                PROGRAMMING LANGUAGE
+              </th>
+              <td className="p-1">
                 <div className="w-20 h-4 bg-[#222]">
                   <div
                     className="flex h-4 bg-[#f8861e]"
@@ -91,12 +107,14 @@ const AboutMe = () => {
                   </div>
                 </div>
               </td>
-              <th className="px-4 text-[#f8861e]">AVERAGE</th>
+              <th className="p-1 text-[#f8861e]">AVERAGE</th>
             </tr>
             <tr>
-              <th className="px-4 text-[#f8861e]">TYPECSRPT</th>
-              <th className="px-4 text-[#f8861e]">PROGRAMMING LANGUAGE</th>
-              <td className="px-4">
+              <th className="p-1 text-[#f8861e]">TYPECSRPT</th>
+              <th className="p-1 text-[#f8861e] hidden xl:block">
+                PROGRAMMING LANGUAGE
+              </th>
+              <td className="p-1">
                 <div className="w-20 h-4 bg-[#222]">
                   <div
                     className="flex h-4 bg-[#f8861e]"
@@ -106,12 +124,12 @@ const AboutMe = () => {
                   </div>
                 </div>
               </td>
-              <th className="px-4 text-[#f8861e]">AVERAGE</th>
+              <th className="p-1 text-[#f8861e]">AVERAGE</th>
             </tr>
             <tr>
-              <th className="px-4 text-[#f8861e]">NEXT.JS</th>
-              <th className="px-4 text-[#f8861e]">FRAMEWORK</th>
-              <td className="px-4">
+              <th className="p-1 text-[#f8861e]">NEXT.JS</th>
+              <th className="p-1 text-[#f8861e] hidden xl:block">FRAMEWORK</th>
+              <td className="p-1">
                 <div className="w-20 h-4 bg-[#222]">
                   <div
                     className="flex h-4 bg-[#f8861e]"
@@ -121,12 +139,12 @@ const AboutMe = () => {
                   </div>
                 </div>
               </td>
-              <th className="px-4 text-[#f8861e]">AVERAGE</th>
+              <th className="p-1 text-[#f8861e]">AVERAGE</th>
             </tr>
             <tr>
-              <th className="px-4 text-[#f8861e]">ANGULAR</th>
-              <th className="px-4 text-[#f8861e]">FRAMEWORK</th>
-              <td className="px-4">
+              <th className="p-1 text-[#f8861e]">ANGULAR</th>
+              <th className="p-1 text-[#f8861e] hidden xl:block">FRAMEWORK</th>
+              <td className="p-1">
                 <div className="w-20 h-4 bg-[#222]">
                   <div
                     className="flex h-4 bg-[#f8861e]"
@@ -136,12 +154,12 @@ const AboutMe = () => {
                   </div>
                 </div>
               </td>
-              <th className="px-4 text-[#f8861e]">LOW</th>
+              <th className="p-1 text-[#f8861e]">LOW</th>
             </tr>
             <tr>
-              <th className="px-4 text-[#f8861e]">TAILWIND</th>
-              <th className="px-4 text-[#f8861e]">FRAMEWORK</th>
-              <td className="px-4">
+              <th className="p-1 text-[#f8861e]">TAILWIND</th>
+              <th className="p-1 text-[#f8861e] hidden xl:block">FRAMEWORK</th>
+              <td className="p-1">
                 <div className="w-20 h-4 bg-[#222]">
                   <div
                     className="flex h-4 bg-[#f8861e]"
@@ -151,12 +169,14 @@ const AboutMe = () => {
                   </div>
                 </div>
               </td>
-              <th className="px-4 text-[#f8861e]">AVERAGE</th>
+              <th className="p-1 text-[#f8861e]">AVERAGE</th>
             </tr>
             <tr>
-              <th className="px-4 text-[#f8861e]">GIT</th>
-              <th className="px-4 text-[#f8861e]">VERSION CONTROL</th>
-              <td className="px-4">
+              <th className="p-1 text-[#f8861e]">GIT</th>
+              <th className="p-1 text-[#f8861e] hidden xl:block">
+                VERSION CONTROL
+              </th>
+              <td className="p-1">
                 <div className="w-20 h-4 bg-[#222]">
                   <div
                     className="flex h-4 bg-[#f8861e]"
@@ -166,12 +186,12 @@ const AboutMe = () => {
                   </div>
                 </div>
               </td>
-              <th className="px-4 text-[#f8861e]">ADEPT</th>
+              <th className="p-1 text-[#f8861e]">ADEPT</th>
             </tr>
             <tr>
-              <th className="px-4 text-[#f8861e]">POSTGRESQL</th>
-              <th className="px-4 text-[#f8861e]">DATABASE</th>
-              <td className="px-4">
+              <th className="p-1 text-[#f8861e]">POSTGRESQL</th>
+              <th className="p-1 text-[#f8861e] hidden xl:block">DATABASE</th>
+              <td className="p-1">
                 <div className="w-20 h-4 bg-[#222]">
                   <div
                     className="flex h-4 bg-[#f8861e]"
@@ -181,12 +201,12 @@ const AboutMe = () => {
                   </div>
                 </div>
               </td>
-              <th className="px-4 text-[#f8861e]">LOW</th>
+              <th className="p-1 text-[#f8861e]">LOW</th>
             </tr>
             <tr>
-              <th className="px-4 text-[#f8861e]">FIREBASE</th>
-              <th className="px-4 text-[#f8861e]">DATABASE</th>
-              <td className="px-4">
+              <th className="p-1 text-[#f8861e]">FIREBASE</th>
+              <th className="p-1 text-[#f8861e] hidden xl:block">DATABASE</th>
+              <td className="p-1">
                 <div className="w-20 h-4 bg-[#222]">
                   <div
                     className="flex h-4 bg-[#f8861e]"
@@ -196,7 +216,7 @@ const AboutMe = () => {
                   </div>
                 </div>
               </td>
-              <th className="px-4 text-[#f8861e]">AVERAGE</th>
+              <th className="p-1 text-[#f8861e]">AVERAGE</th>
             </tr>
           </tbody>
         </table>
@@ -204,7 +224,7 @@ const AboutMe = () => {
       {/* Right Section with Profile ID */}
       <div className="flex flex-col space-y-5">
         <div
-          className="flex flex-row bg-black border-4 border-[#f8861e] w-170 h-75 p-5 space-x-4 rounded-2xl"
+          className="flex flex-row justify-center bg-black border-4 border-[#f8861e] xl:w-170 h-75 p-5 space-x-4 rounded-2xl"
           style={{
             backgroundImage: `
                   repeating-linear-gradient(0deg, rgba(255,191,133,0.1) 0, rgba(255,191,133,0.1) 1px, transparent 2px, transparent 32px),
@@ -213,9 +233,9 @@ const AboutMe = () => {
           }}
         >
           {/* Left Side of the ID */}
-          <div className="flex flex-col">
-            <div className="flex justify-center border-4 border-[#f8861e] p-1 mb-2">
-              <p className="text-md text-[#f8861e] tracking-wide">
+          <div className="flex items-center flex-col w-25 xl:w-50">
+            <div className="flex items-center justify-center border-4 border-[#f8861e] p-1 mb-2">
+              <p className="text-sm xl:text-md text-[#f8861e] tracking-wide">
                 CONFIRM IDENTITY
               </p>
             </div>
@@ -227,44 +247,36 @@ const AboutMe = () => {
               className="border-4 border-[#f8861e] mb-2"
             />
             <div className="flex justify-center bg-[#f8861e] p-0.5">
-              <p className="text-md tracking-widest font-bold">VARIANT N2301</p>
+              <p className="text-md tracking-widest font-bold ">
+                VARIANT N2301
+              </p>
             </div>
           </div>
           {/* Right Side of the ID */}
-          <div className="flex flex-row bg-black border-4 border-[#f8861e] w-125  p-3 ">
+          <div className=" flex flex-row xl:text-sm text-xs bg-black border-4 border-[#f8861e] xl:w-125 w-75  p-3 xl:tracking-widest  overflow-hidden ">
             {/* Input */}
             <div className="flex flex-col space-y-1 ">
-              <h1 className="font-bold text-sm tracking-widest text-[#f8861e]">
-                VARIANT NAME:
-              </h1>
-              <h1 className=" text-sm tracking-widest text-[#f8861e] pl-5">
-                JULE JERRISH QUIJANO
-              </h1>
-              <h1 className="font-bold text-sm tracking-widest text-[#f8861e]">
+              <h1 className="font-bold text-[#f8861e]">VARIANT NAME:</h1>
+              <h1 className="   text-[#f8861e] pl-5">JULE JERRISH QUIJANO</h1>
+              <h1 className="font-bold   text-[#f8861e]">
                 EDUCATIONAL BACKGROUND:
               </h1>
-              <h1 className=" text-sm tracking-widest text-[#f8861e] pl-5">
+              <h1 className="   text-[#f8861e] pl-5">
                 BS COMPUTER ENGINEERING GRADUATE
               </h1>
-              <h1 className="font-bold text-sm tracking-widest text-[#f8861e]">
-                SCHOOL GRADUATED:
-              </h1>
-              <h1 className=" text-sm tracking-widest text-[#f8861e] pl-5">
+              <h1 className="font-bold   text-[#f8861e]">SCHOOL GRADUATED:</h1>
+              <h1 className="  text-[#f8861e] pl-5">
                 CEBU INSTITUTE OF TECHNOLOGY - UNIVERSITY
               </h1>
-              <h1 className="font-bold text-sm tracking-widest text-[#f8861e]">
-                ROLE:
-              </h1>
-              <h1 className=" text-sm tracking-widest text-[#f8861e] pl-5">
-                FRONTEND DEVELOPER
-              </h1>
+              <h1 className="font-bold   text-[#f8861e]">ROLE:</h1>
+              <h1 className="  text-[#f8861e] pl-5">FRONTEND DEVELOPER</h1>
             </div>
           </div>
         </div>
         {/* Work Experience Section */}
-        <div className="flex h-full w-full space-x-5 justify-between">
+        <div className="flex flex-col items-center xl:flex-row h-full w-full space-x-5 justify-between">
           <div
-            className="flex flex-col bg-black border-4 border-[#f8861e] space-y-2 h-full p-y-5 pt-5 rounded-2xl"
+            className="flex flex-col bg-black border-4 border-[#f8861e] space-y-2 h-full w-full p-y-5 pt-5 rounded-2xl"
             style={{
               backgroundImage: `
                   repeating-linear-gradient(0deg, rgba(255,191,133,0.1) 0, rgba(255,191,133,0.1) 1px, transparent 2px, transparent 32px),
@@ -273,11 +285,11 @@ const AboutMe = () => {
             }}
           >
             <div className="flex justify-center items-center w-full h-10 bg-[#f8861e]">
-              <h1 className="text-xl font-extrabold tracking-widest">
+              <h1 className="xl:text-xl font-extrabold tracking-widest">
                 VARIANT EXPERIENCE TIMELINE
               </h1>
             </div>
-            <div className="flex flex-row items-center space-x-4 p-3">
+            <div className="flex justify-center flex-row items-center space-x-4 p-3">
               <button
                 onClick={prev}
                 className="text-[#f8861e] text-2xl px-2 hover:text-[#ff6508] hover:scale-130 transition"
@@ -309,8 +321,12 @@ const AboutMe = () => {
             </div>
           </div>
           {/* Logo and resume part */}
-          <div className="flex flex-col items-center w-full h-full justify-end space-y-7">
-            <div className="flex flex-col justify-center -space-y-6">
+          <div className="flex xl:flex-col items-center w-full h-full justify-evenly xl:justify-between ">
+            <div
+              className="flex flex-col justify-center -space-y-6"
+              onClick={() => setShowResumeModal(true)}
+              style={{ cursor: "pointer" }}
+            >
               <Image
                 src="/images/fileTVA.png"
                 alt="File Logo"
@@ -335,6 +351,9 @@ const AboutMe = () => {
           </div>
         </div>
       </div>
+      {showResumeModal && (
+        <ResumeModal onClose={() => setShowResumeModal(false)} />
+      )}
     </section>
   );
 };
