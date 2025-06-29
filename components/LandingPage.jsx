@@ -50,8 +50,8 @@ const LandingPage = () => {
               height={200}
               className="mb-2"
             />
-            <div className="flex flex-row gap-2 mb-1">
-              <h1 className="text-2xl text-[#e03627] tracking-tighter xl:text-3xl">
+            <div className="flex flex-row items-baseline gap-2 mb-1">
+              <h1 className="text-xl text-[#e03627] tracking-tighter xl:text-3xl">
                 Greetings,
               </h1>
               <h1 className="text-2xl xl:text-3xl font-bold text-[#942021] tracking-tighter">
@@ -148,7 +148,7 @@ const LandingPage = () => {
                 alt="Miss Minutes Icon"
                 width={190}
                 height={190}
-                className="xl:mr-30 scale-x-100 bounce-in-smooth transition duration-200 hover:scale-110 hover:[#e03627] cursor-pointer"
+                className="w-28 h-28 md:w-40 md:h-40 xl:w-[190px] xl:h-[190px] xl:mr-30 scale-x-100 bounce-in-smooth transition duration-200 hover:scale-110 cursor-pointer"
                 onClick={() => setShowMissMinutesModal(true)}
               />
             </div>

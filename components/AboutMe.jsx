@@ -31,6 +31,22 @@ const AboutMe = () => {
   const next = () =>
     setCurrent((prev) => (prev === experiences.length - 1 ? 0 : prev + 1));
 
+  // Preload modal images when component mounts
+  useEffect(() => {
+    // Preload resume modal image (update this path to match your ResumeModal image)
+    const resumeModalImages = [
+      "/images/resume.png", // Replace with actual resume modal image path
+      "/images/resume-page1.png", // Add any other images your ResumeModal uses
+      "/images/resume-page2.png", // Add more as needed
+      "/images/missMinutes2.png", // If this modal can also appear on this page
+    ];
+
+    resumeModalImages.forEach((imagePath) => {
+      const img = new window.Image();
+      img.src = imagePath;
+    });
+  }, []);
+
   useEffect(() => {
     if (showResumeModal) {
       document.body.style.overflow = "hidden";
@@ -58,7 +74,7 @@ const AboutMe = () => {
         }}
       >
         <div className="flex items-center justify-center w-full xl:h-15 bg-[#f8861e]">
-          <h1 className="xl:text-2xl text-xl font-extrabold tracking-widest">
+          <h1 className="xl:text-2xl text-md font-extrabold tracking-widest">
             VARIANT SKILL ASSESSMENT
           </h1>
         </div>
@@ -323,19 +339,19 @@ const AboutMe = () => {
           {/* Logo and resume part */}
           <div className="flex xl:flex-col items-center w-full h-full justify-evenly xl:justify-between ">
             <div
-              className="flex flex-col justify-center -space-y-6"
+              className="flex flex-col gap-2 justify-center -space-y-6"
               onClick={() => setShowResumeModal(true)}
               style={{ cursor: "pointer" }}
             >
               <Image
                 src="/images/fileTVA.png"
                 alt="File Logo"
-                width={70}
-                height={70}
+                width={150}
+                height={150}
                 className=" w-auto brightness-120 scale-70 transition duration-200 hover:scale-80 cursor-pointer"
               />
               <div className="flex justify-center items-center">
-                <h1 className="text-md text-[#f8861e] font-extrabold tracking-widest">
+                <h1 className="xl:text-lg text-xs text-[#f8861e] font-extrabold tracking-wider">
                   VARIANT'S RESUME
                 </h1>
               </div>

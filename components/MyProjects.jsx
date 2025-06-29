@@ -73,7 +73,6 @@ const projects = [
     image: "/images/projectsImages/consolestale.png",
     tools: ["/images/tech/c-sharp.png", "/images/tech/netcore.png"],
   },
-  // Add more projects as needed
 ];
 const MyProjects = () => {
   const [selected, setSelected] = useState(0);
@@ -118,7 +117,7 @@ const MyProjects = () => {
               <h1 className="xl:text-2xl text-xl font-bold text-[#f8861e] tracking-widest">
                 TOOLS
               </h1>
-              <div className="grid xl:grid-cols-2 grid-cols-4 xl:pt-5 py-3 justify-center gap-5 items-center">
+              <div className="grid xl:grid-cols-2 grid-cols-4 xl:pt-5 py-2 justify-center xl:gap-5 items-center">
                 {projects[selected].tools?.map((tool, idx) => (
                   <div
                     key={idx}
@@ -129,7 +128,7 @@ const MyProjects = () => {
                       alt={`Tool ${idx + 1}`}
                       width={70}
                       height={70}
-                      className="object-contain"
+                      className="object-contain w-10 h-10 md:w-14 md:h-14 xl:w-[70px] xl:h-[70px]"
                     />
                   </div>
                 )) || (
@@ -177,9 +176,9 @@ const MyProjects = () => {
           </div>
           {/* Placeholder for project picture */}
           <div className="flex flex-col border-4 border-[#f8861e] p-6 xl:w-150 h-full space-y-2">
-            <h2 className="xl:text-3xl text-xl font-bold mb-4 text-[#f8861e] tracking-widest">
+            <h2 className="xl:text-3xl text-md font-bold mb-4 text-[#f8861e] tracking-wider">
               {projects[selected].title},{" "}
-              <span className="p-1 pb-0 xl:text-xl text-sm font-semibold text-black bg-[#f8861e]">
+              <span className="p-1 pb-0 xl:text-xl text-xs font-semibold text-black bg-[#f8861e] tracking-normal">
                 {projects[selected].subtitle}
               </span>
             </h2>
