@@ -9,9 +9,9 @@ const ibmPlex = IBM_Plex_Sans({ subsets: ["latin"], weight: ["400", "700"] });
 const experiences = [
   {
     company: "PIXEL8 WEB SOLUTIONS AND CONSULTANCY",
-    role: "Frontend Developer",
+    role: "Frontend Developer / Team Leader",
     period: "JUNE 2023",
-    description: "Built responsive UIs and collaborated with the TVA team.",
+    description: "Fixed and built responsive UIs.",
   },
   {
     company: "GOOGLE DEVELOPERS STUDENT CLUB",
@@ -32,7 +32,7 @@ const AboutMe = () => {
   return (
     <section
       id="about"
-      className={`min-h-screen flex p-12 justify-between bg-black border-2 border-[#f8861e] w-full h-full ${ibmPlex.className} space-x-5`}
+      className={`min-h-screen flex p-12 justify-between bg-black border-2 border-b-0 border-[#f8861e] w-full h-full ${ibmPlex.className} space-x-5`}
     >
       {/* Left Section with Timeline */}
       <div
@@ -277,7 +277,7 @@ const AboutMe = () => {
                 VARIANT EXPERIENCE TIMELINE
               </h1>
             </div>
-            <div className="flex flex-row items-center space-x-4">
+            <div className="flex flex-row items-center space-x-4 p-3">
               <button
                 onClick={prev}
                 className="text-[#f8861e] text-2xl px-2 hover:text-[#ff6508] hover:scale-130 transition"
@@ -289,7 +289,7 @@ const AboutMe = () => {
                 <h2 className="text-xl font-bold text-[#f8861e] mb-3">
                   {experiences[current].company}
                 </h2>
-                <p className="text-md text-[#f8861e]">
+                <p className="text-sm text-[#f8861e]">
                   {experiences[current].role}
                 </p>
                 <p className="text-sm text-[#f8861e]">

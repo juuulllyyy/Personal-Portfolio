@@ -2,9 +2,27 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import MissMinutes from "./modals/MissMinutes";
+import EmailModal from "./modals/EmailModal";
 
 const LandingPage = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showEmailModal, setShowEmailModal] = useState(false);
+
+  const personalLinks = {
+    facebook: "https://www.facebook.com/juuulllyyyy/",
+    instagram: "https://www.instagram.com/juuulllyyy/",
+    linkedin: "https://linkedin.com/in/jule-jerrish-quijano",
+    github: "https://github.com/juuulllyyy",
+  };
+
+  const openLinks = (platform) => {
+    if (platform === "mail") {
+      setShowEmailModal(true);
+    } else {
+      window.open(personalLinks[platform], "_blank", "noopener,noreferrer");
+    }
+  };
+
   return (
     <main className="scroll-smooth">
       <section
@@ -87,28 +105,40 @@ const LandingPage = () => {
                     alt="Facebook Icon"
                     width={30}
                     height={30}
-                    className="transition duration-200 hover:scale-110 hover:brightness-75 hover:[#e03627]"
+                    className="transition duration-200 hover:scale-110 hover:brightness-75 hover:[#e03627] cursor-pointer"
+                    onClick={() => openLinks("facebook")}
                   />
                   <Image
                     src="/images/instagram.png"
                     alt="Instagram Icon"
                     width={30}
                     height={30}
-                    className="transition duration-200 hover:scale-110 hover:brightness-75 hover:[#e03627]"
+                    className="transition duration-200 hover:scale-110 hover:brightness-75 hover:[#e03627] cursor-pointer"
+                    onClick={() => openLinks("instagram")}
                   />
                   <Image
                     src="/images/linkedin.png"
                     alt="Linkedin Icon"
                     width={30}
                     height={30}
-                    className="transition duration-200 hover:scale-110 hover:brightness-75 hover:[#e03627]"
+                    className="transition duration-200 hover:scale-110 hover:brightness-75 hover:[#e03627] cursor-pointer"
+                    onClick={() => openLinks("linkedin")}
                   />
                   <Image
                     src="/images/github.png"
                     alt="Github Icon"
                     width={30}
                     height={30}
-                    className="transition duration-200 hover:scale-110 hover:brightness-75 hover:[#e03627]"
+                    className="transition duration-200 hover:scale-110 hover:brightness-75 hover:[#e03627] cursor-pointer"
+                    onClick={() => openLinks("github")}
+                  />
+                  <Image
+                    src="/images/mail.png"
+                    alt="Mail Icon"
+                    width={30}
+                    height={30}
+                    className="transition duration-200 hover:scale-110 hover:brightness-75 hover:[#e03627] cursor-pointer"
+                    onClick={() => openLinks("mail")}
                   />
                 </div>
               </div>
@@ -125,6 +155,9 @@ const LandingPage = () => {
           </div>
         </div>
         {showModal && <MissMinutes onClose={() => setShowModal(false)} />}
+        {showEmailModal && (
+          <EmailModal onClose={() => setShowEmailModal(false)} />
+        )}
       </section>
     </main>
   );

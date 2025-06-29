@@ -68,3 +68,19 @@ html {
   scrollbar-width: thin;
   scrollbar-color: #ff6508 #1a1a1a;
 }
+.embla__viewport {
+  overflow: hidden;
+  width: 100%;
+}
+.embla__container {
+  display: flex;
+}
+.embla__slide {
+  min-width: 80%;
+  margin-right: 16px;
+  transition: transform 0.3s;
+}
+.scrollable-div {
+  height: 400px; /* Set a fixed height */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
